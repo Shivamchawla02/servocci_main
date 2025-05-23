@@ -72,7 +72,7 @@ const HomeTagline = () => {
   </li>
   <li className="flex items-start gap-2">
     <FaCheckCircle className="text-green-400 mt-1" />
-    Scientifically designed psychometric assessments
+    Scientifically designed psychometric assessments  
   </li>
 </motion.ul>
 {/* //remove hyperlink */}
