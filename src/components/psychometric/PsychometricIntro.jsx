@@ -16,7 +16,7 @@ const PsychometricIntro = () => {
 
   return (
     <section className="relative h-[90vh] overflow-hidden text-white">
-      {/* Background video */}
+      {/* Background video
       <video
         ref={videoRef}
         autoPlay
@@ -28,7 +28,7 @@ const PsychometricIntro = () => {
       >
         <source src="/videos/psychometric-bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
+      </video> */}
 
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
