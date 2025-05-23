@@ -1,35 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Brain, Star, ShieldCheck } from "lucide-react";
 
 const PsychometricIntro = () => {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const playPromise = videoRef.current?.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        console.log("Autoplay prevented:", error);
-      });
-    }
-  }, []);
-
   return (
-    <section className="relative h-[90vh] overflow-hidden text-white">
-      {/* Background video
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      >
-        <source src="/videos/psychometric-bg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
-
+    <section className="relative h-[90vh] overflow-hidden text-white bg-gradient-to-br from-[#1e293b] to-[#0f172a]">
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
 
@@ -63,17 +38,17 @@ const PsychometricIntro = () => {
           }}
         >
           <Card
-            icon={<Brain className="text-primary h-8 w-8" />}
+            icon={<Brain className="text-orange-500 h-8 w-8" />}
             title="What Are Psychometric Tests?"
             description="Standardized assessments measuring your thinking style, emotional makeup, and behavioral tendencies."
           />
           <Card
-            icon={<Star className="text-primary h-8 w-8" />}
+            icon={<Star className="text-orange-500 h-8 w-8" />}
             title="Why Are They Important?"
             description="They help you discover your most suitable career path and make well-informed academic or professional decisions."
           />
           <Card
-            icon={<ShieldCheck className="text-primary h-8 w-8" />}
+            icon={<ShieldCheck className="text-orange-500 h-8 w-8" />}
             title="Why Choose Us?"
             description="We provide expert-designed tests, personalized guidance, and in-depth reports trusted by thousands of students and professionals."
           />
@@ -84,7 +59,7 @@ const PsychometricIntro = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="mt-10 px-6 py-3 rounded-md bg-primary text-white font-medium hover:bg-primary/90 transition"
+          className="mt-10 px-6 py-3 rounded-md bg-orange-500 text-white font-medium hover:bg-orange-600 transition"
         >
           Explore Plans
         </motion.a>

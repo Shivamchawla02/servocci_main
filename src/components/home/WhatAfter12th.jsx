@@ -24,7 +24,7 @@ const WhatAfter12th = () => {
           Let us help you explore your options and guide you to the perfect path forward.
         </motion.p>
 
-        {/* Bigger & Centered Image with animation */}
+        {/* Centered image with animation */}
         <motion.div
           className="flex justify-center mt-12"
           initial={{ opacity: 0, scale: 0.9 }}

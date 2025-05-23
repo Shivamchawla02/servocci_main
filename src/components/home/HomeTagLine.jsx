@@ -32,11 +32,11 @@ const HomeTagline = () => {
 
   return (
     <section
-  className="relative text-center pt-36 md:pt-48 pb-28 md:pb-40 bg-cover bg-center bg-no-repeat"
-  style={{
-    backgroundImage: "url('/confusion.jpg')"
-  }}
->
+      className="relative text-center pt-36 md:pt-48 pb-28 md:pb-40 bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('/confusion.jpg')",
+      }}
+    >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
 
@@ -48,34 +48,33 @@ const HomeTagline = () => {
         animate="visible"
       >
         <motion.h1
-  variants={itemVariants}
-  className="text-4xl md:text-5xl font-bold leading-tight"
->
-  Confused about your career? <br />
-  <span className="bg-gradient-to-r from-[#00c3ff] via-[#ff6a00] to-[#ff0066] text-transparent bg-clip-text">
-    We have the answer.
-  </span>
-</motion.h1>
+          variants={itemVariants}
+          className="text-4xl md:text-5xl font-bold leading-tight"
+        >
+          Confused about your career? <br />
+          <span className="bg-gradient-to-r from-[#00c3ff] via-[#ff6a00] to-[#ff0066] text-transparent bg-clip-text">
+            We have the answer.
+          </span>
+        </motion.h1>
 
+        <motion.ul
+          variants={itemVariants}
+          className="mt-6 space-y-2 text-base md:text-lg text-left text-gray-100 max-w-xl mx-auto"
+        >
+          <li className="flex items-start gap-2">
+            <FaCheckCircle className="text-green-400 mt-1" />
+            Personalized career roadmap based on your strengths
+          </li>
+          <li className="flex items-start gap-2">
+            <FaCheckCircle className="text-green-400 mt-1" />
+            1-on-1 sessions with certified career counsellors
+          </li>
+          <li className="flex items-start gap-2">
+            <FaCheckCircle className="text-green-400 mt-1" />
+            Scientifically designed psychometric assessments
+          </li>
+        </motion.ul>
 
-       <motion.ul
-  variants={itemVariants}
-  className="mt-6 space-y-2 text-base md:text-lg text-left text-gray-100 max-w-xl mx-auto"
->
-  <li className="flex items-start gap-2">
-    <FaCheckCircle className="text-green-400 mt-1" />
-    Personalized career roadmap based on your strengths
-  </li>
-  <li className="flex items-start gap-2">
-    <FaCheckCircle className="text-green-400 mt-1" />
-    1-on-1 sessions with certified career counsellors
-  </li>
-  <li className="flex items-start gap-2">
-    <FaCheckCircle className="text-green-400 mt-1" />
-    Scientifically designed psychometric assessments  
-  </li>
-</motion.ul>
-{/* //remove hyperlink */}
         <motion.button
           variants={itemVariants}
           whileHover={{ scale: 1.08 }}
