@@ -6,6 +6,7 @@ import BlogPage from './pages/BlogPage';
 import PsychometricTestPage from './pages/PsychometricTestPage';
 import DocumentPage from './pages/DocumentPage';
 import PhoneNumberPage from './pages/PhoneNumberPage';
+import NotFound from './pages/NotFound.jsx'; // import your 404 component
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
         <Route path="/document-upload" element={<PhoneNumberPage />} />
         <Route path="/document" element={<PhoneNumberPage />} />
         <Route path="/upload-docs" element={<DocumentPage />} />
-        {/* Add other routes here */}
+        {/* 404 catch-all route */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
