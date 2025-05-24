@@ -8,21 +8,20 @@ import ChatBotIcon from '../components/ChatBotIcon.jsx';
 import WhatAfter12th from '../components/home/WhatAfter12th.jsx';
 import Footer from '../components/Footer.jsx';
 
-const HomePage = () => {
+const HomePage = ({ isDarkMode, toggleDarkMode }) => {
   return (
     <>
       <TopNavbar />
-      <MainNavbar />
+      <MainNavbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
       <div className="bg-light">
         <HomeTagline />
         <FeaturedItemsSlider />
         <WhatAfter12th />
         <OurServices />
-        <Footer/>
+        <Footer />
       </div>
 
-      {/* Floating Chatbot Icon */}
       <ChatBotIcon />
     </>
   );
