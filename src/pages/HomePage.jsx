@@ -6,6 +6,7 @@ import OurServices from '../components/home/OurServices.jsx';
 import FeaturedItemsSlider from '../components/home/FeaturedItemsSlider.jsx';
 import ChatBotIcon from '../components/ChatBotIcon.jsx';
 import WhatAfter12th from '../components/home/WhatAfter12th.jsx';
+import Footer from '../components/Footer.jsx';
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
         <FeaturedItemsSlider />
         <WhatAfter12th />
         <OurServices />
+        <Footer/>
       </div>
 
       {/* Floating Chatbot Icon */}
