@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'class',  // <-- place here, not inside content
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -9,19 +9,22 @@ export default {
     extend: {
       colors: {
         // Set 1
-        primary: '#001b48',  // Dark blue
-        secondary: '#ff4f00',  // Bright orange
-        accent: '#ff9d3d',  // Light orange
-        dark: '#430000',  // Dark red
-        neutral: '#2c6975',  // Teal
+        primary: '#001b48',
+        secondary: '#ff4f00',
+        accent: '#ff9d3d',
+        dark: '#430000',
+        neutral: '#2c6975',
 
         // Set 2
-        light: '#ffffff',  // White
-        lightAccent: '#f7d088',  // Pale yellow
-        paleYellow: '#f9e7a6',  // Light yellow
-        offWhite: '#f9f7d9',  // Off white
+        light: '#ffffff',
+        lightAccent: '#f7d088',
+        paleYellow: '#f9e7a6',
+        offWhite: '#f9f7d9',
+      },
+      transitionProperty: {
+        'max-height': 'max-height', // <-- this line added
       },
     },
   },
   plugins: [],
-}
+};
