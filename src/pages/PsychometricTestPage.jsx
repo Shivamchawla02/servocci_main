@@ -4,6 +4,7 @@ import MainNavbar from '../components/MainNavbar';
 import ChatBotIcon from '../components/ChatBotIcon';
 import Pricing from '../components/psychometric/Pricing';
 import PsychometricIntro from '../components/psychometric/PsychometricIntro';
+import PsychometricQuotes from '../components/psychometric/PsychometricQuotes.jsx';
 
 const PsychometricTestPage = () => {
   return (
@@ -13,6 +14,7 @@ const PsychometricTestPage = () => {
 
       <div className="bg-light">
         <PsychometricIntro />
+        <PsychometricQuotes />
         <Pricing />
       </div>
 
