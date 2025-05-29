@@ -6,6 +6,7 @@ import PsychometricTestPage from './pages/PsychometricTestPage';
 import DocumentPage from './pages/DocumentPage';
 import PhoneNumberPage from './pages/PhoneNumberPage';
 import NotFound from './pages/NotFound.jsx';
+import FreeTestPage from './pages/FreeTestPage.jsx';
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/document-upload" element={<PhoneNumberPage />} />
             <Route path="/document" element={<PhoneNumberPage />} />
             <Route path="/upload-docs" element={<DocumentPage />} />
+            <Route path="/free-test" element={<FreeTestPage />} /> 
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

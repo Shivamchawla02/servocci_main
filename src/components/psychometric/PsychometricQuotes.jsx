@@ -1,28 +1,36 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const quotes = [
+const theories = [
   {
-    text: "The good life is a process, not a state of being. It is a direction, not a destination.",
-    author: "Carl Rogers",
-    image: "https://images.unsplash.com/photo-1603415526960-f7e0328f18d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    title: "Person-Centered Theory",
+    thinker: "Carl Rogers",
+    description:
+      "Carl Rogers proposed the Person-Centered Theory, emphasizing the importance of self-actualization, empathy, and unconditional positive regard. It focuses on the individual's capacity for personal growth and change.",
+    image:
+      "https://images.deepai.org/chat-style-image/e0b7429fe6914bed9a888fa49d895564/output.jpg",
   },
   {
-    text: "Until you make the unconscious conscious, it will direct your life and you will call it fate.",
-    author: "Carl Jung",
-    image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    title: "Analytical Psychology",
+    thinker: "Carl Jung",
+    description:
+      "Carl Jung developed Analytical Psychology, which introduced concepts such as the collective unconscious, archetypes, and individuation. It focuses on integrating different parts of the psyche to achieve wholeness.",
+    image:
+      "https://hemibooks.com/wp-content/uploads/UsersmaxDocumentsPythonbooksite2imagesbooks_carl_jung_548.jpg",
   },
   {
-    text: "The aim of psychology is to give us a completely different idea of the things we know best.",
-    author: "Paul Valéry",
-    image: "https://images.unsplash.com/photo-1628890920210-0a9d8dfc264c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    title: "Theory of Perception and Consciousness",
+    thinker: "Paul Valéry",
+    description:
+      "Though more a philosopher-poet, Valéry's reflections on consciousness challenge rigid scientific perspectives. He explored how subjective experience and creativity shape psychological understanding.",
+    image:
+      "https://th.bing.com/th/id/R.46d0a770e0e562675b2d38eed7cb882b?rik=28hTvrpLR39oHQ&riu=http%3a%2f%2fpalimpsestes.fr%2ftextes_divers%2fv%2fvalery%2fpaul_valery01_0.jpg&ehk=c7R9vzfJABozqpV%2bSL6RoaeWr2%2faCGkPt%2fTqZFucZhY%3d&risl=&pid=ImgRaw&r=0",
   },
 ];
 
-const PsychometricQuotes = () => {
+const PsychologyTheories = () => {
   return (
     <section className="relative py-20 px-6 bg-gradient-to-br from-sky-50 to-blue-100">
-      {/* Optional gradient overlay for aesthetic depth */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-white/30 via-white/10 to-transparent" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -32,11 +40,11 @@ const PsychometricQuotes = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Quotes from Great Thinkers in Psychology
+          Core Theories from Pioneers in Psychology
         </motion.h2>
 
         <div className="space-y-20">
-          {quotes.map((quote, idx) => {
+          {theories.map((theory, idx) => {
             const isEven = idx % 2 === 0;
             return (
               <motion.div
@@ -49,17 +57,15 @@ const PsychometricQuotes = () => {
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
                 viewport={{ once: true }}
               >
-                {/* Image */}
                 <img
-                  src={quote.image}
-                  alt={quote.author}
+                  src={theory.image}
+                  alt={theory.thinker}
                   className="w-64 h-64 object-cover rounded-2xl shadow-xl border-4 border-white"
                 />
-
-                {/* Text */}
                 <div className="max-w-xl">
-                  <p className="text-xl text-gray-700 italic mb-4 leading-relaxed">"{quote.text}"</p>
-                  <p className="text-blue-700 font-semibold text-lg">– {quote.author}</p>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{theory.title}</h3>
+                  <p className="text-gray-700 mb-3">{theory.description}</p>
+                  <p className="text-blue-700 font-semibold text-lg">– {theory.thinker}</p>
                 </div>
               </motion.div>
             );
@@ -70,4 +76,4 @@ const PsychometricQuotes = () => {
   );
 };
 
-export default PsychometricQuotes;
+export default PsychologyTheories;

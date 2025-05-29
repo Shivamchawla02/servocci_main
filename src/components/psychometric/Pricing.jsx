@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react"; // optional icon lib
-import clsx from "clsx"; // for className conditional styling
+import { CheckCircle2 } from "lucide-react";
+import clsx from "clsx";
+import { Link, useNavigate } from "react-router-dom";
 
 const Pricing = () => {
   return (
@@ -57,6 +58,7 @@ const Pricing = () => {
 
 export default Pricing;
 
+// Card component
 const PricingCard = ({
   children,
   description,
@@ -66,6 +68,17 @@ const PricingCard = ({
   buttonText,
   active,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (type === "Free Psychometric Test") {
+      // Do nothing, handled by Link
+    } else {
+      // You can replace this with real payment or upgrade logic
+      navigate("/upgrade");
+    }
+  };
+
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -97,23 +110,37 @@ const PricingCard = ({
           <div className="mb-9 flex flex-col gap-3">{children}</div>
         </div>
 
-        <a
-          href="/#"
-          className={clsx(
-            "block w-full rounded-md p-3 text-center text-base font-medium transition",
-            active
-              ? "bg-primary text-white hover:bg-primary/90"
-              : "border border-stroke text-primary hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
-          )}
-        >
-          {buttonText}
-        </a>
+        {type === "Free Psychometric Test" ? (
+          <Link
+            to="/free-test"
+            className={clsx(
+              "block w-full rounded-md p-3 text-center text-base font-medium transition",
+              active
+                ? "bg-primary text-white hover:bg-primary/90"
+                : "border border-stroke text-primary hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
+            )}
+          >
+            {buttonText}
+          </Link>
+        ) : (
+          <button
+            onClick={handleClick}
+            className={clsx(
+              "block w-full rounded-md p-3 text-center text-base font-medium transition",
+              active
+                ? "bg-primary text-white hover:bg-primary/90"
+                : "border border-stroke text-primary hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
+            )}
+          >
+            {buttonText}
+          </button>
+        )}
       </div>
     </motion.div>
   );
 };
 
-
+// Feature list item
 const List = ({ children }) => (
   <p className="flex items-start gap-2 text-base text-body-color dark:text-dark-6">
     <CheckCircle2 className="text-green-500 mt-1 h-5 w-5" />
