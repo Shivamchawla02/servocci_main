@@ -7,6 +7,7 @@ import DocumentPage from './pages/DocumentPage';
 import PhoneNumberPage from './pages/PhoneNumberPage';
 import NotFound from './pages/NotFound.jsx';
 import FreeTestPage from './pages/FreeTestPage.jsx';
+import PlaceholderPage from './pages/PlaceholderPage';
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -41,7 +42,15 @@ const App = () => {
             <Route path="/document-upload" element={<PhoneNumberPage />} />
             <Route path="/document" element={<PhoneNumberPage />} />
             <Route path="/upload-docs" element={<DocumentPage />} />
-            <Route path="/free-test" element={<FreeTestPage />} /> 
+            <Route path="/free-test" element={<FreeTestPage />} />
+
+            {/* Placeholder routes for unimplemented services */}
+            <Route path="/career-counselling" element={<PlaceholderPage title="Career Counselling" />} />
+            <Route path="/admission-guidance" element={<PlaceholderPage title="Admission Guidance" />} />
+            <Route path="/skill-training-courses" element={<PlaceholderPage title="Skill Training Courses" />} />
+            <Route path="/test-series-quizzes" element={<PlaceholderPage title="Test Series / Quizzes" />} />
+            <Route path="/online-degree" element={<PlaceholderPage title="Online Degree" />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
