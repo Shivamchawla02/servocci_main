@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import {
   FaCaretDown,
   FaBrain,
@@ -7,7 +7,7 @@ import {
   FaChalkboardTeacher,
   FaLaptopCode,
   FaFileAlt,
-  FaUniversity
+  FaUniversity,
 } from 'react-icons/fa';
 import DarkModeToggle from './DarkModeToggle';
 
@@ -21,17 +21,40 @@ const serviceLinks = [
 ];
 
 const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // mobile menu open
+  const [dropdownOpen, setDropdownOpen] = useState(false); // desktop dropdown open
+  const dropdownRef = useRef(null);
+  const location = useLocation();
 
-  const handleDropdownToggle = () => setDropdownOpen((prev) => !prev);
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
+  // Close mobile menu and dropdown on route change
+  useEffect(() => {
+    setIsOpen(false);
+    setDropdownOpen(false);
+  }, [location.pathname]);
+
+  // Show dropdown on hover for desktop
   const handleMouseEnter = () => {
     if (window.innerWidth >= 768) setDropdownOpen(true);
   };
 
   const handleMouseLeave = () => {
     if (window.innerWidth >= 768) setDropdownOpen(false);
+  };
+
+  // Toggle dropdown open/close (desktop click & mobile)
+  const handleDropdownToggle = () => {
+    setDropdownOpen(prev => !prev);
   };
 
   return (
@@ -53,19 +76,30 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
           className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex items-center space-x-6"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          ref={dropdownRef}
         >
           <Link to="/" className="text-light dark:text-gray-200 hover:text-accent">Home</Link>
 
           {/* Dropdown */}
-          <div className="relative cursor-pointer">
-            <div onClick={handleDropdownToggle} className="flex items-center text-light dark:text-gray-200 hover:text-accent">
+          <div className="relative cursor-pointer" aria-haspopup="true" aria-expanded={dropdownOpen}>
+            <div
+              onClick={handleDropdownToggle}
+              className="flex items-center text-light dark:text-gray-200 hover:text-accent select-none"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleDropdownToggle();
+                }
+              }}
+            >
               Our Services <FaCaretDown className="ml-2" />
             </div>
 
             <div
-              className={`absolute top-full left-0 mt-2 bg-light dark:bg-gray-800 shadow-lg rounded-md w-64 z-50 transition-all duration-300 ease-in-out overflow-hidden ${
-                dropdownOpen ? "max-h-[600px] opacity-100 visible" : "max-h-0 opacity-0 invisible"
-              }`}
+              className={`absolute top-full left-0 mt-2 bg-light dark:bg-gray-800 shadow-lg rounded-md w-64 z-50 transition-all duration-300 ease-in-out overflow-hidden
+                ${dropdownOpen ? "max-h-[600px] opacity-100 visible" : "max-h-0 opacity-0 invisible"}`}
             >
               {serviceLinks.map((link) => (
                 <Link
@@ -96,29 +130,52 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
 
         {/* Mobile Buttons */}
         <div className="md:hidden ml-auto flex items-center space-x-4">
-          <button onClick={toggleDarkMode} className="bg-secondary hover:bg-accent text-light px-3 py-1 rounded">
+          <button onClick={toggleDarkMode} className="bg-secondary hover:bg-accent text-light px-3 py-1 rounded" aria-label="Toggle Dark Mode">
             {isDarkMode ? '🌙' : '☀️'}
           </button>
-          <button onClick={() => setIsOpen(!isOpen)} className="text-light text-2xl">☰</button>
+          <button
+            onClick={() => {
+              setIsOpen(!isOpen);
+              if (dropdownOpen) setDropdownOpen(false); // close dropdown when toggling mobile menu
+            }}
+            className="text-light text-2xl"
+            aria-label="Toggle Mobile Menu"
+          >
+            ☰
+          </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden pb-4 pt-2 px-4 bg-primary dark:bg-gray-900">
-          <Link to="/" className="block py-2 text-light">Home</Link>
-          <div className="block py-2 text-light" onClick={handleDropdownToggle}>
+        <div className="md:hidden pb-4 pt-2 px-4 bg-primary dark:bg-gray-900" role="menu" aria-label="Mobile Navigation">
+          <Link to="/" className="block py-2 text-light" role="menuitem">Home</Link>
+          <div
+            className="block py-2 text-light cursor-pointer select-none"
+            onClick={handleDropdownToggle}
+            role="button"
+            tabIndex={0}
+            aria-haspopup="true"
+            aria-expanded={dropdownOpen}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleDropdownToggle();
+              }
+            }}
+          >
             <div className="flex items-center">
               Our Services <FaCaretDown className="ml-2" />
             </div>
             {dropdownOpen && (
-              <div className="mt-2 pl-4">
+              <div className="mt-2 pl-4" role="menu">
                 {serviceLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     className="flex items-center gap-2 py-1 text-primary dark:text-gray-300 hover:bg-accent hover:text-light rounded"
                     onClick={() => setIsOpen(false)}
+                    role="menuitem"
                   >
                     <span className="text-lg">{link.icon}</span>
                     {link.name}
@@ -127,11 +184,11 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
               </div>
             )}
           </div>
-          <Link to="/about" className="block py-2 text-light">About Us</Link>
-          <Link to="/blogs" className="block py-2 text-light">Blogs</Link>
-          <Link to="/contact" className="block py-2 text-light">Contact Us</Link>
-          <Link to="/document-upload" className="block py-2 text-light">Document Upload</Link>
-          <Link to="/login" className="block py-2 text-white bg-secondary hover:bg-accent text-center rounded">Login/Register</Link>
+          <Link to="/about" className="block py-2 text-light" role="menuitem">About Us</Link>
+          <Link to="/blogs" className="block py-2 text-light" role="menuitem">Blogs</Link>
+          <Link to="/contact" className="block py-2 text-light" role="menuitem">Contact Us</Link>
+          <Link to="/document-upload" className="block py-2 text-light" role="menuitem">Document Upload</Link>
+          <Link to="/login" className="block py-2 text-white bg-secondary hover:bg-accent text-center rounded" role="menuitem">Login/Register</Link>
         </div>
       )}
     </nav>
