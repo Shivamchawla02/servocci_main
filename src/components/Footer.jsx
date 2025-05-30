@@ -5,6 +5,8 @@ import {
   FaTwitter,
   FaGithub,
   FaYoutube,
+  FaLinkedinIn,
+  FaGlobe
 } from 'react-icons/fa';
 
 const Footer = () => {
@@ -12,24 +14,25 @@ const Footer = () => {
     <footer className="bg-[#0f172a] text-gray-400 py-12 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo & Text */}
-            <div>
-            <img
-                src="/LogoWhite.jpg"
-                alt="Servocci Counsellors Logo"
-                className="h-12 mb-4"
-            />
-            <p className="mb-4">
-                Making the world a better place through constructing elegant hierarchies.
-            </p>
-            <div className="flex space-x-4 text-lg">
-                <FaFacebookF />
-                <FaInstagram />
-                <FaTwitter />
-                <FaGithub />
-                <FaYoutube />
-            </div>
-            </div>
-
+        <div>
+          <img
+            src="/LogoWhite.jpg"
+            alt="Servocci Counsellors Logo"
+            className="h-12 mb-4"
+          />
+          <p className="mb-4">
+            Making the world a better place through constructing elegant hierarchies.
+          </p>
+          <div className="flex space-x-4 text-lg">
+            <a href="https://www.facebook.com/profile.php?id=61555148367108" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+            <a href="https://www.instagram.com/servocci/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+            <a href="https://x.com/servocci" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer"><FaGithub /></a> {/* Add actual GitHub link if any */}
+            <a href="https://www.youtube.com/@SERVOCCI" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+            <a href="https://in.linkedin.com/company/servocci" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+            <a href="https://www.servocci.com" target="_blank" rel="noopener noreferrer"><FaGlobe /></a>
+          </div>
+        </div>
 
         {/* Services */}
         <div>
