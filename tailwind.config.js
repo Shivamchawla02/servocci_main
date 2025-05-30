@@ -5,24 +5,32 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    'z-50',
+    'max-h-[600px]',
+    'opacity-0',
+    'opacity-100',
+    'visible',
+    'invisible',
+    'transition-all',
+    'duration-300',
+    'ease-in-out',
+  ],
   theme: {
     extend: {
       colors: {
-        // Set 1
         primary: '#001b48',
         secondary: '#ff4f00',
         accent: '#ff9d3d',
         dark: '#430000',
         neutral: '#2c6975',
-
-        // Set 2
         light: '#ffffff',
         lightAccent: '#f7d088',
         paleYellow: '#f9e7a6',
         offWhite: '#f9f7d9',
       },
       transitionProperty: {
-        'max-height': 'max-height', // <-- this line added
+        'max-height': 'max-height',
       },
     },
   },
