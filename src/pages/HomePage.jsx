@@ -6,13 +6,16 @@ import FeaturedItemsSlider from '../components/home/FeaturedItemsSlider.jsx';
 import ChatBotIcon from '../components/ChatBotIcon.jsx';
 import WhatAfter12th from '../components/home/WhatAfter12th.jsx';
 import Footer from '../components/Footer.jsx';
-import MainNavbarWrapper from '../components/MainNavBarWrapper.jsx';
+import ClientOnly from '../components/ClientOnly.jsx';
+import MainNavbar from '../components/MainNavbar.jsx';
 
 const HomePage = ({ isDarkMode, toggleDarkMode }) => {
   return (
     <>
       <TopNavbar />
-      <MainNavbarWrapper isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <ClientOnly>
+      <MainNavbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      </ClientOnly>
 
       <div className="bg-light">
         <HomeTagline />
