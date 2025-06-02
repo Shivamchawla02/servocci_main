@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import TopNavbar from './components/TopNavbar'; // ✅ Import TopNavbar
+import MainNavbar from './components/MainNavbar'; // ✅ Import MainNavbar
 import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
 import PsychometricTestPage from './pages/PsychometricTestPage';
@@ -17,7 +19,7 @@ const App = () => {
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    const root = document.documentElement;
     if (isDarkMode) {
       root.classList.add('dark');
       localStorage.setItem('theme', 'dark');
@@ -33,9 +35,17 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`min-h-screen transition-colors duration-300 ${
-        isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'
-      }`}>
+      <div
+        className={`min-h-screen transition-colors duration-300 ${
+          isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'
+        }`}
+      >
+        {/* ✅ Global TopNavbar */}
+        <TopNavbar />
+
+        {/* ✅ Global MainNavbar with dark mode toggle */}
+        <MainNavbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+
         <main className="pt-0">
           <Routes>
             <Route path="/" element={<HomePage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
@@ -48,8 +58,6 @@ const App = () => {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
 
-
-            {/* Placeholder routes for unimplemented services */}
             <Route path="/career-counselling" element={<PlaceholderPage title="Career Counselling" />} />
             <Route path="/admission-guidance" element={<PlaceholderPage title="Admission Guidance" />} />
             <Route path="/skill-training-courses" element={<PlaceholderPage title="Skill Training Courses" />} />

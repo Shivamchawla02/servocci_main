@@ -10,8 +10,6 @@ import Footer from '../components/Footer.jsx';
 const PsychometricTestPage = () => {
   return (
     <>
-      <TopNavbar />
-      <MainNavbar />
 
       <div className="bg-light">
         <PsychometricIntro />

@@ -12,10 +12,6 @@ import MainNavbar from '../components/MainNavbar.jsx';
 const HomePage = ({ isDarkMode, toggleDarkMode }) => {
   return (
     <>
-      <TopNavbar />
-      <ClientOnly>
-      <MainNavbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      </ClientOnly>
 
       <div className="bg-light">
         <HomeTagline />

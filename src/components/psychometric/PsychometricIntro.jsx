@@ -4,14 +4,14 @@ import { Brain, Star, ShieldCheck } from "lucide-react";
 
 const PsychometricIntro = () => {
   return (
-    <section className="relative min-h-[90vh] overflow-hidden text-white bg-gradient-to-br from-[#1e293b] to-[#0f172a]">
-      <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
+    <section className="relative min-h-[90vh] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-300 dark:from-[#1e293b] dark:to-[#0f172a]">
+      <div className="absolute inset-0 bg-black bg-opacity-10 dark:bg-opacity-60 z-10" />
       <div className="relative z-20 container mx-auto px-6 py-16 md:py-24 text-center flex flex-col justify-center items-center min-h-[90vh]">
         <motion.h1
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight max-w-3xl tracking-wide"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight max-w-3xl tracking-wide text-gray-900 dark:text-white"
         >
           Discover Your True Potential
         </motion.h1>
@@ -20,7 +20,7 @@ const PsychometricIntro = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl max-w-2xl text-gray-200 tracking-wide"
+          className="mt-5 sm:mt-6 text-base sm:text-lg md:text-xl max-w-2xl tracking-wide text-gray-700 dark:text-gray-300"
         >
           Quick, scientific insights into your personality and skills — plan your future with confidence.
         </motion.p>
@@ -35,17 +35,17 @@ const PsychometricIntro = () => {
           }}
         >
           <Card
-            icon={<Brain className="text-orange-500 h-9 w-9" />}
+            icon={<Brain className="text-orange-500 dark:text-orange-400 h-9 w-9" />}
             title="What Are Psychometric Tests?"
             description="Fast tests that reveal how your mind works and what makes you unique."
           />
           <Card
-            icon={<Star className="text-orange-500 h-9 w-9" />}
+            icon={<Star className="text-orange-500 dark:text-orange-400 h-9 w-9" />}
             title="Why They Matter"
             description="Find the career and studies that truly fit your strengths and interests."
           />
           <Card
-            icon={<ShieldCheck className="text-orange-400 h-9 w-9" />}
+            icon={<ShieldCheck className="text-orange-400 dark:text-orange-300 h-9 w-9" />}
             title="Why Servocci?"
             description="Expert tests + personalized reports + ongoing career support — made just for you."
           />
@@ -53,7 +53,7 @@ const PsychometricIntro = () => {
 
         {/* Explanatory text below cards */}
         <motion.div
-          className="mt-10 max-w-4xl text-center text-gray-300 text-lg sm:text-xl tracking-wide leading-relaxed"
+          className="mt-10 max-w-4xl text-center text-lg sm:text-xl tracking-wide leading-relaxed text-gray-600 dark:text-gray-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3 }}
@@ -81,13 +81,13 @@ export default PsychometricIntro;
 
 const Card = ({ icon, title, description }) => (
   <motion.div
-    className="bg-white/10 backdrop-blur-md rounded-2xl p-7 text-white shadow-xl hover:shadow-2xl transition-shadow cursor-default"
+    className="bg-white dark:bg-gray-800 bg-opacity-70 dark:bg-opacity-40 backdrop-blur-md rounded-2xl p-7 text-gray-900 dark:text-white shadow-xl hover:shadow-2xl transition-shadow cursor-default"
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.7 }}
   >
     <div className="mb-5">{icon}</div>
     <h3 className="text-2xl font-semibold mb-4 tracking-wide">{title}</h3>
-    <div className="text-base leading-relaxed text-gray-100">{description}</div>
+    <div className="text-base leading-relaxed text-gray-800 dark:text-gray-300">{description}</div>
   </motion.div>
 );

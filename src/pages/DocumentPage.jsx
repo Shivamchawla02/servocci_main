@@ -6,8 +6,6 @@ import Upload from '../components/document-upload/Upload.jsx'
 const DocumentPage = () => {
   return (
     <>
-    <TopNavbar />
-      <MainNavbar />
 
     <div className="bg-light">
       <Upload/>

@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,7 +19,7 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: 'spring',
+      type: "spring",
       stiffness: 80,
       damping: 15,
     },
@@ -26,8 +27,10 @@ const itemVariants = {
 };
 
 const HomeTagline = () => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    window.location.href = "/psychometric-tests";
+    navigate("/psychometric-tests");
   };
 
   return (
@@ -38,7 +41,7 @@ const HomeTagline = () => {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
+      <div className="absolute inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 z-0" />
 
       {/* Animated Content */}
       <motion.div
@@ -59,7 +62,7 @@ const HomeTagline = () => {
 
         <motion.ul
           variants={itemVariants}
-          className="mt-6 space-y-2 text-base md:text-lg text-left text-gray-100 max-w-xl mx-auto"
+          className="mt-6 space-y-2 text-base md:text-lg text-left text-gray-100 dark:text-gray-300 max-w-xl mx-auto"
         >
           <li className="flex items-start gap-2">
             <FaCheckCircle className="text-green-400 mt-1" />
@@ -80,6 +83,7 @@ const HomeTagline = () => {
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleClick}
+          aria-label="Start your career journey"
           className="mt-8 px-6 py-3 bg-gradient-to-r from-[#00c3ff] via-[#ff6a00] to-[#ff0066] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-transform duration-300"
         >
           Start Your Journey
@@ -87,9 +91,10 @@ const HomeTagline = () => {
 
         <motion.p
           variants={itemVariants}
-          className="mt-4 text-sm md:text-base text-gray-300 italic"
+          className="mt-4 text-sm md:text-base text-gray-300 dark:text-gray-400 italic"
         >
-          Helping students across <span className="font-semibold text-white">India</span> discover their true potential.
+          Helping students across <span className="font-semibold text-white">India</span>{" "}
+          discover their true potential.
         </motion.p>
       </motion.div>
     </section>

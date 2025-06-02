@@ -63,8 +63,14 @@ const FeaturedItemsSlider = () => {
   useEffect(() => {
     const animate = async () => {
       while (true) {
-        await bgControls.start({ backgroundPosition: "100% 50%", transition: { duration: 10, ease: "easeInOut" } });
-        await bgControls.start({ backgroundPosition: "0% 50%", transition: { duration: 10, ease: "easeInOut" } });
+        await bgControls.start({
+          backgroundPosition: "100% 50%",
+          transition: { duration: 10, ease: "easeInOut" },
+        });
+        await bgControls.start({
+          backgroundPosition: "0% 50%",
+          transition: { duration: 10, ease: "easeInOut" },
+        });
       }
     };
     animate();
@@ -83,7 +89,7 @@ const FeaturedItemsSlider = () => {
         }}
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60 z-0" />
+      <div className="absolute inset-0 bg-black bg-opacity-60 dark:bg-black dark:bg-opacity-70 z-0" />
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
@@ -94,12 +100,12 @@ const FeaturedItemsSlider = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.7 }}
-            className="px-6 py-14 bg-black bg-opacity-30 backdrop-blur-md rounded-3xl shadow-xl"
+            className="px-6 py-14 bg-black bg-opacity-30 dark:bg-opacity-40 backdrop-blur-md rounded-3xl shadow-xl"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-[#f7d088]">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#f7d088] dark:text-yellow-400">
               {currentItem.title}
             </h2>
-            <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
+            <p className="mt-4 text-lg md:text-xl text-gray-200 dark:text-gray-300 max-w-3xl mx-auto">
               {currentItem.description}
             </p>
             <a
@@ -113,7 +119,11 @@ const FeaturedItemsSlider = () => {
 
         {/* Controls */}
         <div className="flex justify-between items-center mt-10 px-4 md:px-10">
-          <button onClick={handlePrev} className="text-white hover:text-[#f7d088] transition">
+          <button
+            onClick={handlePrev}
+            className="text-white hover:text-[#f7d088] dark:hover:text-yellow-400 transition"
+            aria-label="Previous"
+          >
             <FaArrowLeft size={28} />
           </button>
           <div className="flex space-x-2">
@@ -121,12 +131,16 @@ const FeaturedItemsSlider = () => {
               <div
                 key={i}
                 className={`h-2 w-8 rounded-full transition-all duration-300 ${
-                  i === index ? "bg-[#ff4f00]" : "bg-gray-500"
+                  i === index ? "bg-[#ff4f00]" : "bg-gray-500 dark:bg-gray-700"
                 }`}
               />
             ))}
           </div>
-          <button onClick={handleNext} className="text-white hover:text-[#f7d088] transition">
+          <button
+            onClick={handleNext}
+            className="text-white hover:text-[#f7d088] dark:hover:text-yellow-400 transition"
+            aria-label="Next"
+          >
             <FaArrowRight size={28} />
           </button>
         </div>

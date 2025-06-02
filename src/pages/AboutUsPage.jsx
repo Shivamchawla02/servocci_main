@@ -54,55 +54,56 @@ const sections = [
   },
 ];
 
-
 const AboutUs = () => {
   return (
-    <div className="bg-white text-gray-800 px-4 py-12 max-w-7xl mx-auto">
-      <motion.h1
-        className="text-4xl font-bold mb-12 text-center text-[#001b48]"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        About Us
-      </motion.h1>
-
-      {sections.map((section, index) => (
-        <motion.div
-          key={index}
-          className={`flex flex-col md:flex-row ${
-            index % 2 === 1 ? "md:flex-row-reverse" : ""
-          } items-center gap-8 mb-16`}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section className="bg-white dark:bg-[#121212] text-gray-800 dark:text-gray-300 py-12">
+      <div className="max-w-7xl mx-auto px-4">
+        <motion.h1
+          className="text-4xl font-bold mb-12 text-center text-[#001b48] dark:text-[#f9f7d9]"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
-          <img
-            src={section.image}
-            alt={section.title}
-            className="w-full md:w-1/2 h-64 object-cover rounded-2xl shadow-lg"
-          />
-          <div className="md:w-1/2">
-            <h2 className="text-2xl font-semibold text-[#ff4f00] mb-3">
-              {section.title}
-            </h2>
-            <p className="text-lg leading-relaxed">{section.text}</p>
-          </div>
-        </motion.div>
-      ))}
+          About Us
+        </motion.h1>
 
-      <motion.div
-        className="mt-16 text-center"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <p className="text-lg font-semibold text-[#001b48]">
-          Join us at <strong>Servocci Counsellors</strong> — where your journey to success truly begins.
-        </p>
-      </motion.div>
-    </div>
+        {sections.map((section, index) => (
+          <motion.div
+            key={index}
+            className={`flex flex-col md:flex-row ${
+              index % 2 === 1 ? "md:flex-row-reverse" : ""
+            } items-center gap-8 mb-16`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <img
+              src={section.image}
+              alt={section.title}
+              className="w-full md:w-1/2 h-64 object-cover rounded-2xl shadow-lg"
+            />
+            <div className="md:w-1/2">
+              <h2 className="text-2xl font-semibold text-[#ff4f00] mb-3">
+                {section.title}
+              </h2>
+              <p className="text-lg leading-relaxed">{section.text}</p>
+            </div>
+          </motion.div>
+        ))}
+
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <p className="text-lg font-semibold text-[#001b48] dark:text-[#f9f7d9]">
+            Join us at <strong>Servocci Counsellors</strong> — where your journey to success truly begins.
+          </p>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

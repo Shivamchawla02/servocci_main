@@ -7,8 +7,6 @@ import ChatBotIcon from '../components/ChatBotIcon.jsx'
 const BlogPage = () => {
   return (
     <>
-      <TopNavbar />
-      <MainNavbar />
 
       <div className="bg-light">
         <BlogSection />

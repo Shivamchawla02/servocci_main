@@ -15,7 +15,7 @@ const posts = [
       role: 'Co-Founder / CTO',
       href: '#',
       imageUrl:
-        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
   },
   {
@@ -32,7 +32,7 @@ const posts = [
       role: 'Marketing Specialist',
       href: '#',
       imageUrl:
-        'https://images.unsplash.com/photo-1607748734537-712019de9dbf?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg5MXwwfDF8c2VhY2h8Mnx8fG1hcmtldGluZyUyQ3N0YWZmfGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400',
+        'https://images.unsplash.com/photo-1607748734537-712019de9dbf?crop=entropy&cs=tinysrgb&fit=max&q=80&w=400',
     },
   },
   {
@@ -49,7 +49,7 @@ const posts = [
       role: 'Email Campaign Manager',
       href: '#',
       imageUrl:
-        'https://images.unsplash.com/photo-1504003566817-876b21001764?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg5MXwwfDF8c2VhY2h8Nnx8fG1hcmtldGluZyUyQ3N0YWZmfGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400',
+        'https://images.unsplash.com/photo-1504003566817-876b21001764?crop=entropy&cs=tinysrgb&fit=max&q=80&w=400',
     },
   },
   {
@@ -66,7 +66,7 @@ const posts = [
       role: 'Branding Expert',
       href: '#',
       imageUrl:
-        'https://images.unsplash.com/photo-1503378322837-b781b2871913?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg5MXwwfDF8c2VhY2h8Nnx8fG1hcmtldGluZyUyQ3N0YWZmfGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400',
+        'https://images.unsplash.com/photo-1503378322837-b781b2871913?crop=entropy&cs=tinysrgb&fit=max&q=80&w=400',
     },
   },
   {
@@ -83,7 +83,7 @@ const posts = [
       role: 'UX Designer',
       href: '#',
       imageUrl:
-        'https://images.unsplash.com/photo-1563201548-03266e517ec4?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg5MXwwfDF8c2VhY2h8Mnx8fG1hcmtldGluZyUyQ3N0YWZmfGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400',
+        'https://images.unsplash.com/photo-1563201548-03266e517ec4?crop=entropy&cs=tinysrgb&fit=max&q=80&w=400',
     },
   },
   {
@@ -100,20 +100,20 @@ const posts = [
       role: 'Social Media Strategist',
       href: '#',
       imageUrl:
-        'https://images.unsplash.com/photo-1571767281458-bff2f5684e56?crop=entropy&cs=tinysrgb&fit=max&ixid=MXwyMDg5MXwwfDF8c2VhY2h8Mnx8fG1hcmtldGluZyUyQ3N0YWZmfGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=400',
+        'https://images.unsplash.com/photo-1571767281458-bff2f5684e56?crop=entropy&cs=tinysrgb&fit=max&q=80&w=400',
     },
   },
 ];
 
 export default function BlogSection() {
   return (
-    <div className="bg-[#f9f7d9] py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="bg-[#f9f7d9] dark:bg-[#1a1a1a] py-24 sm:py-32 w-full transition-colors duration-300">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 text-center lg:text-left">
-          <h2 className="text-4xl font-bold tracking-tight text-[#001b48] sm:text-5xl">
+          <h2 className="text-4xl font-bold tracking-tight text-[#001b48] dark:text-[#f7d088] sm:text-5xl transition-colors duration-300">
             From the Blog
           </h2>
-          <p className="mt-2 text-lg text-gray-700">
+          <p className="mt-2 text-lg text-gray-700 dark:text-gray-300 transition-colors duration-300">
             Learn how to grow your career and discover insights from our experts.
           </p>
         </div>
@@ -121,35 +121,41 @@ export default function BlogSection() {
           {posts.map((post) => (
             <article
               key={post.id}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col justify-between"
+              className="bg-white dark:bg-[#2b2b2b] rounded-2xl shadow-md hover:shadow-xl dark:hover:shadow-[#f7d088]/30 transition-shadow duration-300 p-6 flex flex-col justify-between transition-colors duration-300"
             >
               <div>
-                <div className="flex items-center gap-x-4 text-xs text-gray-500">
+                <div className="flex items-center gap-x-4 text-xs text-gray-500 dark:text-gray-400 transition-colors duration-300">
                   <time dateTime={post.datetime}>{post.date}</time>
                   <a
                     href={post.category.href}
-                    className="bg-[#f7d088] text-[#001b48] px-3 py-1 rounded-full text-xs font-medium"
+                    className="bg-[#f7d088] dark:bg-[#ff9d3d] text-[#001b48] dark:text-[#1a1a1a] px-3 py-1 rounded-full text-xs font-medium transition-colors duration-300"
                   >
                     {post.category.title}
                   </a>
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-[#001b48] hover:text-[#ff4f00] transition">
+                <h3 className="mt-4 text-xl font-semibold text-[#001b48] dark:text-[#f7d088] hover:text-[#ff4f00] dark:hover:text-[#ff9d3d] transition-colors duration-300">
                   <a href={post.href}>
                     <span className="absolute inset-0" />
                     {post.title}
                   </a>
                 </h3>
-                <p className="mt-3 text-sm text-gray-700 line-clamp-3">{post.description}</p>
+                <p className="mt-3 text-sm text-gray-700 dark:text-gray-300 line-clamp-3 transition-colors duration-300">
+                  {post.description}
+                </p>
               </div>
               <div className="mt-6 flex items-center gap-x-4">
                 <img
                   src={post.author.imageUrl}
                   alt={post.author.name}
-                  className="w-10 h-10 rounded-full bg-gray-100"
+                  className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 transition-colors duration-300"
                 />
                 <div className="text-sm">
-                  <p className="font-semibold text-[#001b48]">{post.author.name}</p>
-                  <p className="text-gray-500">{post.author.role}</p>
+                  <p className="font-semibold text-[#001b48] dark:text-white transition-colors duration-300">
+                    {post.author.name}
+                  </p>
+                  <p className="text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                    {post.author.role}
+                  </p>
                 </div>
               </div>
             </article>

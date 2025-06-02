@@ -20,7 +20,6 @@ const serviceLinks = [
   { name: "Online Degree", path: "/online-degree", icon: <FaUniversity /> },
 ];
 
-// TOP: import statements remain the same
 const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopDropdownOpen, setIsDesktopDropdownOpen] = useState(false);
@@ -53,6 +52,8 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
     setIsMobileDropdownOpen(false);
   };
 
+  let dropdownTimeout = null;
+
   return (
     <nav className="bg-primary shadow-md sticky top-0 z-50 dark:bg-gray-900 dark:text-gray-100">
       <div className="max-w-7xl mx-auto px-4 relative h-20 flex items-center">
@@ -74,8 +75,15 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
 
           <div
             className="relative"
-            onMouseEnter={() => setIsDesktopDropdownOpen(true)}
-            onMouseLeave={() => setIsDesktopDropdownOpen(false)}
+            onMouseEnter={() => {
+              clearTimeout(dropdownTimeout);
+              setIsDesktopDropdownOpen(true);
+            }}
+            onMouseLeave={() => {
+              dropdownTimeout = setTimeout(() => {
+                setIsDesktopDropdownOpen(false);
+              }, 200);
+            }}
           >
             <div
               className="flex items-center text-light hover:text-accent cursor-pointer"
@@ -85,7 +93,15 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
             </div>
 
             {isDesktopDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-light dark:bg-gray-800 shadow-lg rounded-md w-64 z-50">
+              <div
+                className="absolute top-full left-0 mt-2 bg-light dark:bg-gray-800 shadow-lg rounded-md w-64 z-50"
+                onMouseEnter={() => clearTimeout(dropdownTimeout)}
+                onMouseLeave={() => {
+                  dropdownTimeout = setTimeout(() => {
+                    setIsDesktopDropdownOpen(false);
+                  }, 200);
+                }}
+              >
                 {serviceLinks.map((link) => (
                   <button
                     key={link.path}
@@ -160,4 +176,3 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
 };
 
 export default MainNavbar;
-

@@ -7,17 +7,17 @@ import { Link, useNavigate } from "react-router-dom";
 const Pricing = () => {
   return (
     <section
-      id="pricing"  // Added id here for scroll target
-      className="relative z-10 overflow-hidden bg-white pb-12 pt-20 dark:bg-dark lg:pb-[90px] lg:pt-[120px]"
+      id="pricing"
+      className="relative z-10 overflow-hidden bg-white pb-12 pt-20 dark:bg-gray-900 lg:pb-[90px] lg:pt-[120px]"
     >
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
-              <h2 className="mb-3 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px]">
+              <h2 className="mb-3 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl md:text-[40px]">
                 Psychometric Test Plans
               </h2>
-              <p className="text-base text-body-color dark:text-dark-6">
+              <p className="text-base text-gray-700 dark:text-gray-300">
                 Choose the plan that best suits your needs for career insight and personal development.
               </p>
             </div>
@@ -77,7 +77,7 @@ const PricingCard = ({
     if (type === "Free Psychometric Test") {
       // Do nothing, handled by Link
     } else {
-      // You can replace this with real payment or upgrade logic
+      // Replace with real payment or upgrade logic
       navigate("/upgrade");
     }
   };
@@ -95,19 +95,19 @@ const PricingCard = ({
         className={clsx(
           "relative z-10 flex flex-col justify-between w-full rounded-[10px] border-2 px-8 py-10 shadow-lg sm:p-12 lg:px-6 lg:py-10 xl:p-[50px] min-h-[600px]",
           active
-            ? "border-primary bg-primary/5 dark:border-primary/50"
-            : "border-stroke bg-white dark:border-dark-3 dark:bg-dark-2"
+            ? "border-blue-600 bg-blue-100 dark:border-blue-500 dark:bg-blue-900"
+            : "border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-800"
         )}
       >
         <div>
-          <span className="mb-3 block text-lg font-semibold text-primary">{type}</span>
-          <h2 className="mb-5 text-[42px] font-bold text-dark dark:text-white">
+          <span className="mb-3 block text-lg font-semibold text-blue-600 dark:text-blue-400">{type}</span>
+          <h2 className="mb-5 text-[42px] font-bold text-gray-900 dark:text-white">
             {price}
-            <span className="text-base font-medium text-body-color dark:text-dark-6">
+            <span className="text-base font-medium text-gray-600 dark:text-gray-400">
               / {subscription}
             </span>
           </h2>
-          <p className="mb-8 border-b border-stroke pb-8 text-base text-body-color dark:border-dark-3 dark:text-dark-6">
+          <p className="mb-8 border-b border-gray-300 pb-8 text-base text-gray-700 dark:border-gray-700 dark:text-gray-300">
             {description}
           </p>
           <div className="mb-9 flex flex-col gap-3">{children}</div>
@@ -119,8 +119,8 @@ const PricingCard = ({
             className={clsx(
               "block w-full rounded-md p-3 text-center text-base font-medium transition",
               active
-                ? "bg-primary text-white hover:bg-primary/90"
-                : "border border-stroke text-primary hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
+                ? "bg-blue-600 text-white hover:bg-blue-700"
+                : "border border-gray-300 text-blue-600 hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:border-gray-700"
             )}
           >
             {buttonText}
@@ -131,8 +131,8 @@ const PricingCard = ({
             className={clsx(
               "block w-full rounded-md p-3 text-center text-base font-medium transition",
               active
-                ? "bg-primary text-white hover:bg-primary/90"
-                : "border border-stroke text-primary hover:border-primary hover:bg-primary hover:text-white dark:border-dark-3"
+                ? "bg-blue-600 text-white hover:bg-blue-700"
+                : "border border-gray-300 text-blue-600 hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:border-gray-700"
             )}
           >
             {buttonText}
@@ -145,7 +145,7 @@ const PricingCard = ({
 
 // Feature list item
 const List = ({ children }) => (
-  <p className="flex items-start gap-2 text-base text-body-color dark:text-dark-6">
+  <p className="flex items-start gap-2 text-base text-gray-700 dark:text-gray-300">
     <CheckCircle2 className="text-green-500 mt-1 h-5 w-5" />
     {children}
   </p>

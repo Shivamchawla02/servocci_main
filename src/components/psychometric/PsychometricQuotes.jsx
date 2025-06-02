@@ -1,77 +1,131 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const theories = [
   {
-    title: "Person-Centered Theory",
-    thinker: "Carl Rogers",
-    description:
-      "Carl Rogers proposed the Person-Centered Theory, emphasizing the importance of self-actualization, empathy, and unconditional positive regard. It focuses on the individual's capacity for personal growth and change.",
-    image:
-      "https://images.deepai.org/chat-style-image/e0b7429fe6914bed9a888fa49d895564/output.jpg",
+    title: "RIASEC Theory",
+    thinker: "John L. Holland",
+    sections: {
+      "What It Is":
+        "The RIASEC Theory categorizes people and work environments into six types: Realistic, Investigative, Artistic, Social, Enterprising, and Conventional. It helps individuals find careers that match their personality.",
+      "How It Helps":
+        "It guides students and professionals in discovering career paths aligned with their strengths and interests.",
+      "Real World Example":
+        "A person with high Artistic and Social scores might thrive in careers like counseling through the arts or teaching creative subjects.",
+    },
+    image: "https://th.bing.com/th/id/OIP.XZek5DgdztXLWGn2h2oBMAHaHa?r=0&rs=1&pid=ImgDetMain",
   },
   {
-    title: "Analytical Psychology",
-    thinker: "Carl Jung",
-    description:
-      "Carl Jung developed Analytical Psychology, which introduced concepts such as the collective unconscious, archetypes, and individuation. It focuses on integrating different parts of the psyche to achieve wholeness.",
-    image:
-      "https://hemibooks.com/wp-content/uploads/UsersmaxDocumentsPythonbooksite2imagesbooks_carl_jung_548.jpg",
+    title: "Multiple Intelligences Theory",
+    thinker: "Howard Gardner",
+    sections: {
+      "What It Is":
+        "This theory suggests that intelligence is not singular but includes Linguistic, Logical, Spatial, Musical, Bodily-Kinesthetic, Interpersonal, Intrapersonal, and Naturalistic intelligences.",
+      "How It Helps":
+        "It enables more inclusive education systems, helping learners succeed based on their unique strengths.",
+      "Real World Example":
+        "A student with strong Bodily-Kinesthetic intelligence might do better learning math through physical activities than through traditional classroom instruction.",
+    },
+    image: "https://66.media.tumblr.com/6377d0e5f13aeeffa9e8cabb6a19cb9f/tumblr_nj7w73Rpl21qfvq9bo1_r1_1280.jpg",
   },
   {
-    title: "Theory of Perception and Consciousness",
-    thinker: "Paul Valéry",
-    description:
-      "Though more a philosopher-poet, Valéry's reflections on consciousness challenge rigid scientific perspectives. He explored how subjective experience and creativity shape psychological understanding.",
-    image:
-      "https://th.bing.com/th/id/R.46d0a770e0e562675b2d38eed7cb882b?rik=28hTvrpLR39oHQ&riu=http%3a%2f%2fpalimpsestes.fr%2ftextes_divers%2fv%2fvalery%2fpaul_valery01_0.jpg&ehk=c7R9vzfJABozqpV%2bSL6RoaeWr2%2faCGkPt%2fTqZFucZhY%3d&risl=&pid=ImgRaw&r=0",
+    title: "Time Management Matrix",
+    thinker: "Alec Mackenzie",
+    sections: {
+      "What It Is":
+        "Also known as the Time Management Matrix, this theory divides tasks into four quadrants based on urgency and importance, helping prioritize effectively.",
+      "How It Helps":
+        "It reduces burnout and enhances productivity by distinguishing between what’s truly important and what just feels urgent.",
+      "Real World Example":
+        "A student learns to prioritize studying for finals (important but not urgent) over responding to constant group chat notifications (urgent but not important).",
+    },
+    image: "https://th.bing.com/th/id/OIP.VOCWhJQ2M0ll_BXj1RyPewHaFj?r=0&rs=1&pid=ImgDetMain",
   },
 ];
 
 const PsychologyTheories = () => {
-  return (
-    <section className="relative py-20 px-6 bg-gradient-to-br from-sky-50 to-blue-100">
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-white/30 via-white/10 to-transparent" />
+  const [modalImage, setModalImage] = useState(null);
 
+  return (
+    <section className="relative py-20 px-6 bg-gradient-to-br from-sky-50 to-blue-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-white/30 via-white/10 to-transparent dark:from-black/40 dark:via-black/30 dark:to-transparent" />
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16"
+          className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-gray-100 mb-16"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Core Theories from Pioneers in Psychology
+          Foundational Theories in Career Psychology
         </motion.h2>
 
-        <div className="space-y-20">
-          {theories.map((theory, idx) => {
-            const isEven = idx % 2 === 0;
+        <div className="flex flex-col gap-16">
+          {theories.map((theory, index) => {
+            const isImageLeft = index % 2 === 0;
+
             return (
               <motion.div
-                key={idx}
-                className={`flex flex-col md:flex-row items-center gap-10 ${
-                  !isEven ? "md:flex-row-reverse" : ""
-                }`}
-                initial={{ opacity: 0, y: 30 }}
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.2 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className={`flex flex-col lg:flex-row ${
+                  !isImageLeft ? "lg:flex-row-reverse" : ""
+                } items-center gap-10 bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-6 md:p-10`}
               >
                 <img
                   src={theory.image}
-                  alt={theory.thinker}
-                  className="w-64 h-64 object-cover rounded-2xl shadow-xl border-4 border-white"
+                  alt={theory.title}
+                  onClick={() => setModalImage(theory.image)}
+                  className="w-full max-w-xs cursor-pointer rounded-2xl shadow-md border-4 border-white dark:border-gray-700 transition-transform hover:scale-105"
                 />
-                <div className="max-w-xl">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{theory.title}</h3>
-                  <p className="text-gray-700 mb-3">{theory.description}</p>
-                  <p className="text-blue-700 font-semibold text-lg">– {theory.thinker}</p>
+                <div className="flex-1 space-y-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-blue-700 dark:text-blue-300">
+                      {theory.title}
+                    </h3>
+                    <p className="text-sm italic text-gray-600 dark:text-gray-400 mb-2">
+                      — {theory.thinker}
+                    </p>
+                  </div>
+
+                  {Object.entries(theory.sections).map(([sectionTitle, content]) => (
+                    <div key={sectionTitle}>
+                      <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-1">
+                        {sectionTitle}
+                      </h4>
+                      <p className="text-gray-700 dark:text-gray-300">{content}</p>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             );
           })}
         </div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {modalImage && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setModalImage(null)}
+          >
+            <motion.img
+              src={modalImage}
+              alt="Expanded view"
+              className="max-w-full max-h-full rounded-xl shadow-2xl"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
