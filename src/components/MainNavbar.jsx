@@ -8,17 +8,18 @@ import {
   FaLaptopCode,
   FaFileAlt,
   FaUniversity,
+  FaRocket,
 } from 'react-icons/fa';
 import DarkModeToggle from './DarkModeToggle';
 
-const serviceLinks = [
-  { name: "Career Counselling", path: "/career-counselling", icon: <FaBrain /> },
-  { name: "Admission Guidance", path: "/admission-guidance", icon: <FaGraduationCap /> },
-  { name: "Psychometric Tests", path: "/psychometric-tests", icon: <FaFileAlt /> },
-  { name: "Skill Training Courses", path: "/skill-training-courses", icon: <FaChalkboardTeacher /> },
-  { name: "Test Series/Quizzes", path: "/test-series-quizzes", icon: <FaLaptopCode /> },
-  { name: "Online Degree", path: "/online-degree", icon: <FaUniversity /> },
-];
+// const serviceLinks = [
+//   { name: "Career Counselling", path: "/career-counselling", icon: <FaBrain /> },
+//   { name: "Admission Guidance", path: "/admission-guidance", icon: <FaGraduationCap /> },
+//   { name: "Psychometric Tests", path: "/psychometric-tests", icon: <FaFileAlt /> },
+//   { name: "Skill Training Courses", path: "/skill-training-courses", icon: <FaChalkboardTeacher /> },
+//   { name: "Test Series/Quizzes", path: "/test-series-quizzes", icon: <FaLaptopCode /> },
+//   { name: "Online Degree", path: "/online-degree", icon: <FaUniversity /> },
+// ];
 
 const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -73,7 +74,7 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
         >
           <Link to="/" className="text-light hover:text-accent">Home</Link>
 
-          <div
+          {/* <div
             className="relative"
             onMouseEnter={() => {
               clearTimeout(dropdownTimeout);
@@ -113,18 +114,20 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
                 ))}
               </div>
             )}
-          </div>
+          </div> */}
 
           <Link to="/about" className="text-light hover:text-accent">About Us</Link>
           <Link to="/blogs" className="text-light hover:text-accent">Blogs</Link>
           <Link to="/events" className="text-light hover:text-accent">Events</Link>
           <Link to="/contact" className="text-light hover:text-accent">Contact Us</Link>
-          <Link to="/careers" className="text-light hover:text-accent">Careers</Link>
         </div>
 
         {/* Right Side (Desktop) */}
         <div className="absolute right-0 hidden md:flex items-center pr-4 space-x-4">
-          <Link to="/login" className="bg-secondary hover:bg-accent text-light px-4 py-1 rounded">Login/Register</Link>
+          <Link to="/login" className="bg-secondary hover:bg-accent text-light px-4 py-1 rounded">Login</Link>
+          <Link to="/get-started" className="bg-accent hover:bg-secondary text-light px-4 py-1 rounded flex items-center gap-1">
+            <FaRocket /> Get Started
+          </Link>
           <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         </div>
 
@@ -168,7 +171,8 @@ const MainNavbar = ({ isDarkMode, toggleDarkMode }) => {
           <Link to="/blogs" className="block text-light" onClick={() => setIsMobileMenuOpen(false)}>Blogs</Link>
           <Link to="/contact" className="block text-light" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link>
           <Link to="/document-upload" className="block text-light" onClick={() => setIsMobileMenuOpen(false)}>Document Upload</Link>
-          <Link to="/login" className="block bg-secondary text-white py-1 rounded text-center" onClick={() => setIsMobileMenuOpen(false)}>Login/Register</Link>
+          <Link to="/login" className="block bg-secondary text-white py-1 rounded text-center" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
+          <Link to="/get-started" className="block bg-accent text-white py-1 rounded text-center" onClick={() => setIsMobileMenuOpen(false)}>Get Started</Link>
         </div>
       )}
     </nav>
