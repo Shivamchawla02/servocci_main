@@ -5,8 +5,6 @@ import MainNavbar from './components/MainNavbar';
 import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
 import PsychometricTestPage from './pages/PsychometricTestPage';
-import DocumentPage from './pages/DocumentPage';
-import PhoneNumberPage from './pages/PhoneNumberPage';
 import NotFound from './pages/NotFound.jsx';
 import FreeTestPage from './pages/FreeTestPage.jsx';
 import PlaceholderPage from './pages/PlaceholderPage';
@@ -21,10 +19,8 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
   const navigate = useNavigate();
   const isAuthPage = ['/login', '/get-started', '/register/student'].includes(location.pathname);
 
-
   return (
     <>
-      {/* Show navbars only when not on login/get-started */}
       {!isAuthPage && (
         <>
           <TopNavbar />
@@ -78,19 +74,13 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
             }
           />
 
-
           {/* Regular Routes */}
           <Route path="/" element={<HomePage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/psychometric-tests" element={<PsychometricTestPage />} />
-          <Route path="/document-upload" element={<PhoneNumberPage />} />
-          <Route path="/document" element={<PhoneNumberPage />} />
-          <Route path="/upload-docs" element={<DocumentPage />} />
           <Route path="/free-test" element={<FreeTestPage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/register/student" element={<RegisterStudent />} />
-          
 
           {/* Placeholder routes */}
           <Route path="/career-counselling" element={<PlaceholderPage title="Career Counselling" />} />
