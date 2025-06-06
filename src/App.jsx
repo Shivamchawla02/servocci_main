@@ -14,11 +14,13 @@ import AboutUs from './pages/AboutUsPage.jsx';
 import ContactUs from './pages/ContactUsPage.jsx';
 import Login from './pages/Login.jsx';
 import GetStarted from './pages/GetStarted.jsx';
+import RegisterStudent from './pages/RegisterStudent.jsx';
 
 const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const isAuthPage = ['/login', '/get-started'].includes(location.pathname);
+  const isAuthPage = ['/login', '/get-started', '/register/student'].includes(location.pathname);
+
 
   return (
     <>
@@ -61,6 +63,21 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
               </div>
             }
           />
+          <Route
+            path="/register/student"
+            element={
+              <div className="min-h-screen p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                <button
+                  onClick={() => navigate('/')}
+                  className="mb-4 text-blue-500 hover:underline"
+                >
+                  ← Back to Home
+                </button>
+                <RegisterStudent />
+              </div>
+            }
+          />
+
 
           {/* Regular Routes */}
           <Route path="/" element={<HomePage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
@@ -72,6 +89,8 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
           <Route path="/free-test" element={<FreeTestPage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/register/student" element={<RegisterStudent />} />
+          
 
           {/* Placeholder routes */}
           <Route path="/career-counselling" element={<PlaceholderPage title="Career Counselling" />} />

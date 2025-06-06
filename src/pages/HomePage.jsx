@@ -8,6 +8,8 @@ import WhatAfter12th from '../components/home/WhatAfter12th.jsx';
 import Footer from '../components/Footer.jsx';
 import ClientOnly from '../components/ClientOnly.jsx';
 import MainNavbar from '../components/MainNavbar.jsx';
+import PsychometricPreview from '../components/home/PsychometricPreview.jsx';
+import BlogsPreview from '../components/home/BlogsPreview.jsx';
 
 const HomePage = ({ isDarkMode, toggleDarkMode }) => {
   return (
@@ -16,8 +18,10 @@ const HomePage = ({ isDarkMode, toggleDarkMode }) => {
       <div className="bg-light">
         <HomeTagline />
         <FeaturedItemsSlider />
+        <PsychometricPreview />
         <WhatAfter12th />
         <OurServices />
+        <BlogsPreview/>
         <Footer />
       </div>
 

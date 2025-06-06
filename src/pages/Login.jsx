@@ -9,19 +9,36 @@ const Login = () => {
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      console.log("Logging in:", form);
-      // Replace with actual API call
-      nav("/dashboard");
-    } catch (err) {
-      alert("Login failed – check credentials.");
-    } finally {
-      setLoading(false);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    const res = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.msg || "Login failed");
     }
-  };
+
+    // Save user and token
+    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("token", data.token);
+
+    nav("/");
+  } catch (err) {
+    alert(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4 bg-white">

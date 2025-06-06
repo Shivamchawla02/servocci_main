@@ -46,7 +46,7 @@ const PsychometricIntro = () => {
           />
           <Card
             icon={<ShieldCheck className="text-orange-400 dark:text-orange-300 h-9 w-9" />}
-            title="Why Servocci?"
+            title="Why Servocci Counsellors?"
             description="Expert tests + personalized reports + ongoing career support — made just for you."
           />
         </motion.div>
