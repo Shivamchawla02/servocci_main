@@ -7,11 +7,6 @@ const ContactUs = () => {
         
         {/* Left: Info Section */}
         <div className="bg-white p-6 rounded-2xl shadow-lg border">
-          <img
-            src="https://cdn.pixabay.com/photo/2020/05/19/17/51/contact-us-5191532_1280.jpg"
-            alt="Contact Us"
-            className="rounded-xl mb-6 w-full"
-          />
           <h2 className="text-2xl font-bold text-[#001b48] mb-4">Let's Connect</h2>
           <p className="text-[#430000] mb-6">
             Our friendly business psychologists are always here to support your assessment needs.

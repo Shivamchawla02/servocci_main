@@ -83,6 +83,21 @@ useEffect(() => {
           <Link to="/about" className="text-light hover:text-accent">About Us</Link>
           <Link to="/blogs" className="text-light hover:text-accent">Blogs</Link>
           <Link to="/contact" className="text-light hover:text-accent">Contact Us</Link>
+
+          <button
+          onClick={() => {
+            if (isLoggedIn) {
+              window.open("https://testseries.servocci.com/", "_blank");
+            } else {
+              navigate("/login");
+            }
+          }}
+          className="text-light hover:text-accent"
+        >
+          Test Series
+        </button>
+
+
         </div>
 
         {/* Right Side (Desktop) */}
@@ -140,6 +155,21 @@ useEffect(() => {
           <Link to="/blogs" className="block text-light" onClick={() => setIsMobileMenuOpen(false)}>Blogs</Link>
           <Link to="/events" className="block text-light" onClick={() => setIsMobileMenuOpen(false)}>Events</Link>
           <Link to="/contact" className="block text-light" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link>
+          <button
+  onClick={() => {
+    setIsMobileMenuOpen(false);
+    if (isLoggedIn) {
+      window.open("https://testseries.servocci.com/", "_blank");
+    } else {
+      navigate("/login");
+    }
+  }}
+  className="block text-left w-full text-light"
+>
+  Test Series
+</button>
+
+
          {isLoggedIn ? (
   <button
     onClick={() => {

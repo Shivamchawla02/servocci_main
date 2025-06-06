@@ -1,72 +1,120 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const featuredItems = [
   {
-    title: "Top Colleges for Engineering",
-    description: "Explore the best colleges with high placement and industry exposure.",
-    cta: "Explore Colleges",
-    link: "#explore-colleges",
-  },
-  {
-    title: "Free Career Counselling Session",
+    title: "Free Career Counselling Sessions",
     description: "Book a free 1:1 call with our expert counsellors today.",
     cta: "Book Now",
-    link: "#book-session",
+    link: "#free-counselling",
+    bgImage:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
   },
   {
-    title: "Online Skill Training Offers",
+    title: "MBBS Admissions Abroad",
+    description: "Explore top universities overseas for MBBS admissions.",
+    cta: "Explore MBBS",
+    link: "#mbbs-abroad",
+    bgImage:
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+    title: "Admission Guidance (Domestic/International)",
+    description: "Get expert guidance for college admissions at home and abroad.",
+    cta: "Get Guidance",
+    link: "#admission-guidance",
+    // Updated the image URL here (replaced broken URL)
+    bgImage:
+      "https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+    title: "Online Skill Enhancement Offers",
     description: "Get certified in trending skills from top instructors.",
     cta: "Start Learning",
-    link: "#skill-training",
+    link: "#skill-enhancement",
+    bgImage:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80",
   },
   {
-    title: "Mock Test Series 2025",
-    description: "Prepare smartly for upcoming entrance exams.",
-    cta: "Take Test",
-    link: "#mock-tests",
+    title: "Mock Test Papers for School Level Students",
+    description: "Prepare smartly with mock tests designed for school students.",
+    cta: "Take Tests",
+    link: "#mock-tests-school",
+    bgImage:
+      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+    title: "Video Courses for School Students",
+    description: "Engaging video courses to boost your school learning.",
+    cta: "Watch Now",
+    link: "#video-courses",
+    bgImage:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+  title: "Entrance Exam / Govt Exam Test Series",
+  description: "Practice and ace your entrance and government exams.",
+  cta: "Practice Now",
+  link: "#govt-exam-tests",
+  bgImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
+
+},
+
+
+  {
+    title: "Psychometric Assessments",
+    description: "Understand your strengths and career preferences better.",
+    cta: "Take Assessment",
+    link: "#psychometric-assessments",
+    bgImage:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80",
   },
 ];
 
 const FeaturedItemsSlider = () => {
   const [index, setIndex] = useState(0);
   const intervalRef = useRef(null);
+  const bgControls = useAnimation();
 
-  useEffect(() => {
-    startAutoSlide();
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  const startAutoSlide = () => {
+  const startAutoSlide = useCallback(() => {
     intervalRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % featuredItems.length);
     }, 6000);
-  };
+  }, []);
 
-  const handleNext = () => {
-    clearInterval(intervalRef.current);
-    setIndex((prev) => (prev + 1) % featuredItems.length);
-    startAutoSlide();
-  };
-
-  const handlePrev = () => {
-    clearInterval(intervalRef.current);
-    setIndex((prev) => (prev - 1 + featuredItems.length) % featuredItems.length);
-    startAutoSlide();
-  };
-
-  const currentItem = featuredItems[index];
-
-  const bgControls = useAnimation();
+  const clearAutoSlide = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+  }, []);
 
   useEffect(() => {
+    startAutoSlide();
+    return () => clearAutoSlide();
+  }, [startAutoSlide, clearAutoSlide]);
+
+  const handleNext = useCallback(() => {
+    clearAutoSlide();
+    setIndex((prev) => (prev + 1) % featuredItems.length);
+    startAutoSlide();
+  }, [clearAutoSlide, startAutoSlide]);
+
+  const handlePrev = useCallback(() => {
+    clearAutoSlide();
+    setIndex((prev) => (prev - 1 + featuredItems.length) % featuredItems.length);
+    startAutoSlide();
+  }, [clearAutoSlide, startAutoSlide]);
+
+  useEffect(() => {
+    let isMounted = true;
     const animate = async () => {
-      while (true) {
+      while (isMounted) {
         await bgControls.start({
           backgroundPosition: "100% 50%",
           transition: { duration: 10, ease: "easeInOut" },
         });
+        if (!isMounted) break;
         await bgControls.start({
           backgroundPosition: "0% 50%",
           transition: { duration: 10, ease: "easeInOut" },
@@ -74,7 +122,13 @@ const FeaturedItemsSlider = () => {
       }
     };
     animate();
+
+    return () => {
+      isMounted = false;
+    };
   }, [bgControls]);
+
+  const currentItem = featuredItems[index];
 
   return (
     <section className="relative w-full py-24 overflow-hidden">
@@ -83,8 +137,7 @@ const FeaturedItemsSlider = () => {
         animate={bgControls}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80')",
+          backgroundImage: `url(${currentItem.bgImage})`,
           backgroundSize: "cover",
         }}
       />

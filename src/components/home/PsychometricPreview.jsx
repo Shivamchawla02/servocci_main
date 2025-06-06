@@ -69,7 +69,10 @@ const PsychometricPreview = () => {
 
         {/* CTA Button */}
         <motion.button
-          onClick={() => navigate("/psychometric-tests")}
+          onClick={() => {
+          navigate("/psychometric-tests");
+          setTimeout(() => window.scrollTo(0, 0), 0); // Wait for routing to complete
+          }}
           className="mt-10 px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg shadow-lg hover:bg-orange-600 transition"
           whileHover={{ scale: 1.05 }}
         >

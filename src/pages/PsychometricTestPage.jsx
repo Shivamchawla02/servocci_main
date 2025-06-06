@@ -6,6 +6,7 @@ import Pricing from '../components/psychometric/Pricing';
 import PsychometricIntro from '../components/psychometric/PsychometricIntro';
 import PsychometricQuotes from '../components/psychometric/PsychometricQuotes.jsx';
 import Footer from '../components/Footer.jsx';
+import PsychometricFAQ from '../components/psychometric/PsychometricFAQ.jsx';
 
 const PsychometricTestPage = () => {
   return (
@@ -15,6 +16,7 @@ const PsychometricTestPage = () => {
         <PsychometricIntro />
         <PsychometricQuotes />
         <Pricing />
+        <PsychometricFAQ/>
         <Footer />
       </div>
 
