@@ -14,6 +14,32 @@ import Login from './pages/Login.jsx';
 import GetStarted from './pages/GetStarted.jsx';
 import RegisterStudent from './pages/RegisterStudent.jsx';
 
+// Chat widget styles
+const BrevoChatPosition = () => (
+  <style>{`
+    #brevo-conversations-widget {
+      position: fixed !important;
+      left: 20px !important;
+      bottom: 20px !important;
+      width: 350px !important;
+      height: 500px !important;
+      max-width: 90vw !important;
+      max-height: 80vh !important;
+      z-index: 9999 !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+      right: auto !important;
+    }
+
+    #brevo-conversations-widget iframe {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  `}</style>
+);
+
+// AppRoutes: contains all routes
 const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,17 +56,12 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
 
       <main className="pt-0">
         <Routes>
-          {/* Special Routes without navbars */}
+          {/* Auth pages with no nav */}
           <Route
             path="/login"
             element={
               <div className="min-h-screen p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-                <button
-                  onClick={() => navigate('/')}
-                  className="mb-4 text-blue-500 hover:underline"
-                >
-                  ← Back to Home
-                </button>
+                <button onClick={() => navigate('/')} className="mb-4 text-blue-500 hover:underline">← Back to Home</button>
                 <Login />
               </div>
             }
@@ -49,12 +70,7 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
             path="/get-started"
             element={
               <div className="min-h-screen p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-                <button
-                  onClick={() => navigate('/')}
-                  className="mb-4 text-blue-500 hover:underline"
-                >
-                  ← Back to Home
-                </button>
+                <button onClick={() => navigate('/')} className="mb-4 text-blue-500 hover:underline">← Back to Home</button>
                 <GetStarted />
               </div>
             }
@@ -63,18 +79,13 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
             path="/register/student"
             element={
               <div className="min-h-screen p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-                <button
-                  onClick={() => navigate('/')}
-                  className="mb-4 text-blue-500 hover:underline"
-                >
-                  ← Back to Home
-                </button>
+                <button onClick={() => navigate('/')} className="mb-4 text-blue-500 hover:underline">← Back to Home</button>
                 <RegisterStudent />
               </div>
             }
           />
 
-          {/* Regular Routes */}
+          {/* Main routes */}
           <Route path="/" element={<HomePage isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/psychometric-tests" element={<PsychometricTestPage />} />
@@ -82,7 +93,7 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
 
-          {/* Placeholder routes */}
+          {/* Placeholder service routes */}
           <Route path="/career-counselling" element={<PlaceholderPage title="Career Counselling" />} />
           <Route path="/admission-guidance" element={<PlaceholderPage title="Admission Guidance" />} />
           <Route path="/skill-training-courses" element={<PlaceholderPage title="Skill Training Courses" />} />
@@ -96,10 +107,9 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
   );
 };
 
+// Main App
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    return localStorage.getItem('theme') === 'dark';
-  });
+  const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
 
   useEffect(() => {
     const root = document.documentElement;
@@ -112,17 +122,36 @@ const App = () => {
     }
   }, [isDarkMode]);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
+  useEffect(() => {
+    // Brevo widget initialization
+    window.BrevoConversationsID = '677f91cdb1d21bb58509ee28';
+    window.BrevoConversations = window.BrevoConversations || function () {
+      (window.BrevoConversations.q = window.BrevoConversations.q || []).push(arguments);
+    };
+
+    window.BrevoConversations('init', {
+      selector: '#brevo-conversations-widget',
+      zIndex: 9999,
+      minimized: true,
+      customLauncherSelector: null
+    });
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  const toggleDarkMode = () => setIsDarkMode(prev => !prev);
 
   return (
     <Router>
-      <div
-        className={`min-h-screen transition-colors duration-300 ${
-          isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'
-        }`}
-      >
+      <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'}`}>
+        <BrevoChatPosition />
         <AppRoutes isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       </div>
     </Router>
