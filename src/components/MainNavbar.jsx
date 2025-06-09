@@ -11,6 +11,8 @@ import {
   FaRocket,
 } from 'react-icons/fa';
 import DarkModeToggle from './DarkModeToggle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const serviceLinks = [
   { name: "Career Counselling", path: "/career-counselling", icon: <FaBrain /> },
@@ -89,13 +91,17 @@ useEffect(() => {
             if (isLoggedIn) {
               window.open("https://testseries.servocci.com/", "_blank");
             } else {
-              navigate("/login");
+              toast.info("Please login to access Test Series", { autoClose: 1500 });
+              setTimeout(() => {
+                navigate("/login");
+              }, 1600);
             }
           }}
           className="text-light hover:text-accent"
         >
           Test Series
         </button>
+
 
 
         </div>
@@ -161,7 +167,10 @@ useEffect(() => {
     if (isLoggedIn) {
       window.open("https://testseries.servocci.com/", "_blank");
     } else {
-      navigate("/login");
+      toast.info("Please login to access Test Series", { autoClose: 1500 });
+      setTimeout(() => {
+        navigate("/login");
+      }, 1600);
     }
   }}
   className="block text-left w-full text-light"
@@ -195,6 +204,7 @@ useEffect(() => {
 
         </div>
       )}
+      <ToastContainer position="top-center" />
     </nav>
   );
 };
