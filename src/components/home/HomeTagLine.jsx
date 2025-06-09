@@ -38,7 +38,7 @@ const HomeTagline = () => {
       }}
     >
       {/* Dark overlay — dialed down to 50 % so the banner is visible */}
-      <div className="absolute inset-0 bg-black/50 dark:bg-black/70" />
+      <div className="absolute inset-0 bg-black/15 dark:bg-black/50" />
 
       {/* ----  CONTENT  ---- */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center md:items-start gap-12">
