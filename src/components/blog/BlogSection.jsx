@@ -46,6 +46,61 @@ const posts = [
     category: { title: "Online Learning", href: "#" },
     author: { name: "Shubham Malik", role: "Director of Servocci Counsellors" },
   },
+  {
+    id: 5,
+    title: "Top 5 In-demand Skills Every Student Should Learn In 2025",
+    href: "https://res.cloudinary.com/dhpm7jmyy/image/upload/v1749453403/Blog_5_-_Skill_Training_Dev_sdaxvu.pdf", // Add Cloudinary link here
+    description:
+      "From digital literacy and data analysis to emotional intelligence and adaptability, discover the five essential skill areas that will define student success in 2025 and beyond, with expert insights and Servocci's development programs.",
+    date: "June 9, 2025",
+    datetime: "2025-06-09",
+    category: { title: "Skill Training and Development", href: "#" },
+    author: { name: "Shubham Malik", role: "Director of Servocci Counsellors" },
+  },
+  {
+    id: 6,
+    title: "A Beginner’s Guide to Studying Abroad: From Applications to Scholarships",
+    href: "https://res.cloudinary.com/dhpm7jmyy/image/upload/v1749453404/Blog_6_-_Study_Abroad_ehk2fe.pdf", // Add Cloudinary link here
+    description:
+      "Studying abroad opens doors to global exposure, high-quality education, and career growth. This beginner's guide walks you through choosing the right university, application tips, managing finances, and adapting to life abroad—with Servocci’s expert support at every step.",
+    date: "June 9, 2025",
+    datetime: "2025-06-09",
+    category: { title: "Study Abroad", href: "#" },
+    author: { name: "Shubham Malik", role: "Director of Servocci Counsellors" },
+  },
+  {
+    id: 7,
+    title: "What Is a Psychometric Test, and Why Is It Crucial for Career Success?",
+    href: "https://res.cloudinary.com/dhpm7jmyy/image/upload/v1749453482/blog_7_psychometric_test_x40xjd.pdf", // Add Cloudinary link here
+    description:
+      "Psychometric tests are powerful tools for understanding strengths, interests, and personality traits. Learn how they aid career guidance, support informed decisions, and empower individuals to discover the right path—backed by Servocci’s expert insights and one-on-one counseling.",
+    date: "June 9, 2025",
+    datetime: "2025-06-09",
+    category: { title: "Psychometric Tests", href: "#" },
+    author: { name: "Shubham Malik", role: "Director of Servocci Counsellors" },
+  },
+  {
+    id: 8,
+    title: "How the NEP Credit Framework is Changing India’s Educational Landscape",
+    href: "https://res.cloudinary.com/dhpm7jmyy/image/upload/v1749453484/blog_8_edu._trends_lmsuol.pdf", // Add Cloudinary link here
+    description:
+      "Explore how the NEP 2020 credit framework is transforming education in India by promoting flexibility, interdisciplinary learning, global recognition, and skill-based programs. Learn how Servocci’s NEP-aligned training solutions empower students and institutions for the future.",
+    date: "June 9, 2025",
+    datetime: "2025-06-09",
+    category: { title: "Education – Trends", href: "#" },
+    author: { name: "Shubham Malik", role: "Director of Servocci Counsellors" },
+  },
+  {
+    id: 9,
+    title: "How Parents Can Support Their Child's Career Choices",
+    href: "https://res.cloudinary.com/dhpm7jmyy/image/upload/v1749453482/BLOG_9F_l52dhs.pdf", // Add Cloudinary link here
+    description:
+      "This blog is a practical guide for parents to support their child's career journey without pressure. Learn how to actively listen, use psychometric tests, provide emotional and financial support, and seek expert advice from Servocci to build a future-ready educational plan.",
+    date: "June 9, 2025",
+    datetime: "2025-06-09",
+    category: { title: "Parent's Guide to Education", href: "#" },
+    author: { name: "Shubham Malik", role: "Director of Servocci Counsellors" },
+  },
 ];
 
 export default function BlogSection() {
