@@ -17,7 +17,7 @@ const options = [
   {
     label: "Institution",
     icon: <FaUniversity size={40} />,
-    route: "/school-login",
+    route: "/register/instituition",
     external: false,
   },
   {

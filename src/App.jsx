@@ -13,6 +13,7 @@ import ContactUs from './pages/ContactUsPage.jsx';
 import Login from './pages/Login.jsx';
 import GetStarted from './pages/GetStarted.jsx';
 import RegisterStudent from './pages/RegisterStudent.jsx';
+import RegisterInstitution from './pages/RegisterInstituition.jsx';
 
 // Chat widget styles
 const BrevoChatPosition = () => (
@@ -43,7 +44,7 @@ const BrevoChatPosition = () => (
 const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const isAuthPage = ['/login', '/get-started', '/register/student'].includes(location.pathname);
+  const isAuthPage = ['/login', '/get-started', '/register/student', '/register/instituition'].includes(location.pathname);
 
   return (
     <>
@@ -81,6 +82,15 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
               <div className="min-h-screen p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
                 <button onClick={() => navigate('/')} className="mb-4 text-blue-500 hover:underline">← Back to Home</button>
                 <RegisterStudent />
+              </div>
+            }
+          />
+          <Route
+            path="/register/instituition"
+            element={
+              <div className="min-h-screen p-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+                <button onClick={() => navigate('/')} className="mb-4 text-blue-500 hover:underline">← Back to Home</button>
+                <RegisterInstitution />
               </div>
             }
           />
