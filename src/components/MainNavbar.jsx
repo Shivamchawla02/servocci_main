@@ -82,6 +82,7 @@ useEffect(() => {
         >
           <Link to="/" className="text-light hover:text-accent">Home</Link>
 
+          <Link to="/career-counselling" className="text-light hover:text-accent">Career Counseling</Link>
           <Link to="/about" className="text-light hover:text-accent">About Us</Link>
           <Link to="/blogs" className="text-light hover:text-accent">Blogs</Link>
           <Link to="/contact" className="text-light hover:text-accent">Contact Us</Link>

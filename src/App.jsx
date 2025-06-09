@@ -14,6 +14,7 @@ import Login from './pages/Login.jsx';
 import GetStarted from './pages/GetStarted.jsx';
 import RegisterStudent from './pages/RegisterStudent.jsx';
 import RegisterInstitution from './pages/RegisterInstituition.jsx';
+import CareerCounsellingPage from './pages/CareerCounselingPage.jsx';
 
 // Chat widget styles
 const BrevoChatPosition = () => (
@@ -102,9 +103,9 @@ const AppRoutes = ({ isDarkMode, toggleDarkMode }) => {
           <Route path="/free-test" element={<FreeTestPage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/career-counselling" element={<CareerCounsellingPage />} />
 
           {/* Placeholder service routes */}
-          <Route path="/career-counselling" element={<PlaceholderPage title="Career Counselling" />} />
           <Route path="/admission-guidance" element={<PlaceholderPage title="Admission Guidance" />} />
           <Route path="/skill-training-courses" element={<PlaceholderPage title="Skill Training Courses" />} />
           <Route path="/test-series-quizzes" element={<PlaceholderPage title="Test Series / Quizzes" />} />
